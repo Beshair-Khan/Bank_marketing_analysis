@@ -419,7 +419,7 @@ def plot_duration_kpi(df: pd.DataFrame):
     fig.patch.set_facecolor("#f8f9fa")
     gs = gridspec.GridSpec(2, 3, figure=fig, hspace=0.5, wspace=0.4)
  
-    # ── 8a. Duration decile subscription analysis ─────────────────────────────
+    #  8a. Duration decile subscription analysis
     ax0 = fig.add_subplot(gs[0, :2])
     df["dur_decile"] = pd.qcut(df["duration"], q=10, labels=[f"D{i}" for i in range(1, 11)])
     dur_stats = (df.groupby("dur_decile", observed=True)["subscribed"]
@@ -441,7 +441,7 @@ def plot_duration_kpi(df: pd.DataFrame):
                 linestyle="--", linewidth=1.8, label=f"Overall avg {df['subscribed'].mean()*100:.1f}%")
     ax0.legend()
  
-    # ── 8b. Contact type subscription rate
+    # 8b. Contact type subscription rate
     ax1 = fig.add_subplot(gs[0, 2])
     contact_rate = (df.groupby("contact")["subscribed"].mean() * 100).sort_values()
     bars = ax1.bar(contact_rate.index, contact_rate.values,
@@ -487,10 +487,7 @@ def plot_duration_kpi(df: pd.DataFrame):
                  fontsize=15, fontweight="bold", y=1.01, color="#1a3a5c")
     save(fig, "05_duration_analysis.png")
  
- 
-# =============================================================================
 # 9.  NUMPY STATISTICAL SUMMARY
-# =============================================================================
  
 def print_numpy_stats(df: pd.DataFrame):
     print("\n[8] NumPy Statistical Summary")

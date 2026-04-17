@@ -26,11 +26,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 # 1. DATA LOADING & SYNTHETIC FALLBACK
  
 def load_or_generate_data(path: str = "data/bank-full.csv") -> pd.DataFrame:
-    """
-    Try to load the real Kaggle CSV.
-    If it is not found, generate a realistic synthetic dataset so the
-    script always runs even before the CSV is downloaded.
-    """
+    
     data_path = os.path.join(os.path.dirname(__file__), path)
  
     if os.path.exists(data_path):
